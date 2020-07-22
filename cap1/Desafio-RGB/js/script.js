@@ -1,33 +1,58 @@
-window.addEventListener('load', start);
+let inputRangeRed = null;
+let inputRangeGreen = null;
+let inputRangeBlue = null;
 
-function start() {
-  console.log('Start');
+let inputTextRed = null;
+let inputTextGreen = null;
+let inputTextBlue = null;
+
+let r = '0';
+let g = '0';
+let b = '0';
+
+let divScare = null;
+
+window.addEventListener('load', () => {
+  mapElements();
+  syncDiv();
+});
+
+function mapElements() {
+  inputRangeRed = document.querySelector('#inputRangeRed');
+  inputRangeGreen = document.querySelector('#inputRangeGreen');
+  inputRangeBlue = document.querySelector('#inputRangeBlue');
+
+  inputTextRed = document.querySelector('#inputTextRed');
+  inputTextGreen = document.querySelector('#inputTextGreen');
+  inputTextBlue = document.querySelector('#inputTextBlue');
+
+  divScare = document.querySelector('#divScare');
+
+  inputRangeRed.addEventListener('change', handleInputRangeChange);
+  inputRangeGreen.addEventListener('change', handleInputRangeChange);
+  inputRangeBlue.addEventListener('change', handleInputRangeChange);
 }
 
-const rangeInputs = Array.from(
-  document.body.querySelectorAll('input[type="range"]')
-);
-const previewDiv = document.querySelector('.preview');
+function handleInputRangeChange(event) {
+  const value = event.target.value;
+  const id = event.target.id;
+  switch (id) {
+    case 'inputRangeRed':
+      r = value;
+      break;
+    case 'inputRangeGreen':
+      g = value;
+      break;
+    case 'inputRangeBlue':
+      b = value;
+      break;
+  }
+  syncDiv();
+}
+function syncDiv() {
+  divSquare.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
-const updatePreviewColor = () => {
-  const rgbColor = `rgb(${rangeInputs.map((range) => range.value).join(',')})`;
-  previewDiv.style.backgroundColor = rgbColor;
-};
-const initRangeInput = () => {
-  rangeInputs.forEach((range) => {
-    const input = document.querySelector(`#${range.id}-value`);
-    range.value = 0;
-    input.value = range.value;
-    range.addEventListener('input', (event) => {
-      input.value = event.target.value;
-      updatePreviewColor();
-    });
-  });
-};
-
-const init = () => {
-  initRangeInput();
-  updatePreviewColor();
-};
-
-window.addEventListener('load', init);
+  inputTextRed.value = r;
+  inputTextGreen.value = g;
+  inputTextBlue.value = b;
+}

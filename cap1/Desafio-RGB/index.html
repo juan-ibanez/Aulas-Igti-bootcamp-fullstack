@@ -3,39 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/reset.css" />
+    <title>Trabalho Prático - módulo 01</title>
+    <!--<link rel="stylesheet" href="./css/reset.css" />-->
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Desafio RGB</title>
   </head>
   <body>
-    <h1>Desafio RGB da IGTI</h1>
-    <div class="grid">
-      <div class="grid-item"><strong>(R) Vermelho </strong></div>
-      <div class="grid-item">
-        <input type="range" id="red" min="0" max="255" />
-      </div>
-      <div class="grid-item">
-        <input type="text" disabled id="red-value" />
-      </div>
-      <div class="grid-item"><strong>(G) Verde </strong></div>
-      <div class="grid-item">
-        <input type="range" id="green" min="0" max="255" />
-      </div>
-      <div class="grid-item">
-        <input type="text" disabled id="green-value" />
-      </div>
-      <div class="grid-item"><strong>(B) Azul </strong></div>
-      <div class="grid-item">
-        <input type="range" id="blue" min="0" max="255" />
-      </div>
-      <div class="grid-item">
-        <input type="text" disabled id="blue-value" />
-      </div>
-      <div class="grid-item"></div>
-      <div class="grid-item">
-        <div class="preview"></div>
-      </div>
+    <h1>Trabalho Prático</h1>
+
+    <div class="flex-row">
+      <span class="label">(R) Vermelho</span>
+      <input
+        id="inputRangeRed"
+        class="range"
+        type="range"
+        value="0"
+        min="0"
+        max="255"
+      />
+      <input id="inputTextRed" class="text" type="text" value="0" disabled />
     </div>
+
+    <div class="flex-row">
+      <span class="label">(G) Verde</span>
+      <input
+        id="inputRangeGreen"
+        class="range"
+        type="range"
+        value="0"
+        min="0"
+        max="255"
+      />
+      <input id="inputTextGreen" class="text" type="text" value="0" disabled />
+    </div>
+
+    <div class="flex-row">
+      <span class="label">(B) Azul</span>
+      <input
+        id="inputRangeBlue"
+        class="range"
+        type="range"
+        value="0"
+        min="0"
+        max="255"
+      />
+      <input id="inputTextBlue" class="text" type="text" value="0" disabled />
+    </div>
+    <div id="divSquare" class="square"></div>
+
     <script src="./js/script.js"></script>
   </body>
 </html>

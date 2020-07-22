@@ -1,34 +1,27 @@
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: Consolas;
   padding: 20px;
-  font-size: large;
 }
-h1 {
-  font-size: 20px;
-  margin-top: 100px;
-  text-align: center;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
-.grid {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+.label {
+  min-width: 150px;
 }
-.grid-item {
-  padding: 10px;
+.range {
+  min-width: 200px;
 }
-.grid-item input {
-  width: 80%;
-  text-align: center;
-  margin: 0 auto;
+.text {
+  margin-left: 10px;
+  width: 50px;
 }
-.preview {
-  border: 1px solid #ccc;
+.square {
   width: 100px;
   height: 100px;
-  margin: 10px auto;
+  border: 1px solid lightgray;
+  margin-top: 20px;
 }
