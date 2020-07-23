@@ -1,69 +1,81 @@
-'use strict'; //O JavaScript acusa mais erros
+window.addEventListener('load', () => {
+  doMap();
+  doFilter();
+  doForEach();
+  doReduce();
+  doFind();
+  doSome();
+  doEvery();
+  doSort();
+});
+function doMap() {
+  const nameEmailArray = people.results.map((person) => {
+    return { name: person.name, email: person.email };
+  });
+  console.log(nameEmailArray);
 
-//var x let
-
-//var tem escopo abrangente
-//let tem escopo reduzido
-
-function withVar() {
-  for (var i = 0; i < 10; i++) {
-    console.log('var ' + i);
-  }
-  i = 20;
-  console.log(i);
+  return nameEmailArray;
 }
-
-function withLet() {
-  for (let i = 0; i < 10; i++) {
-    console.log('var ' + i);
-  }
-  //i = 20;
-  //console.log(i);
+function doFilter() {
+  const olderThan18 = people.results.filter((person) => {
+    return person.dob.age > 50;
+  });
+  console.log(olderThan18);
 }
-withVar();
-withLet();
+function doForEach() {
+  const mappedPeople = doMap();
 
-//const - não podemos reatribuir valores.
-
-//const c = 10;
-//c = 20;
-
-const d = [];
-console.log(d);
-d.push(1);
-console.log(d);
-
-function sum(a, b) {
-  return a + b;
+  mappedPeople.forEach((person) => {
+    person.nameSize =
+      person.name.title.length +
+      person.name.first.length +
+      person.name.last.length;
+  });
+  console.log(mappedPeople);
 }
+function doReduce() {
+  const totalAges = people.results.reduce((accumulator, current) => {
+    return accumulator + current.dob.age;
+  }, 0);
+  console.log(totalAges);
 
-//função anônima
-const sum2 = function (a, b) {
-  return a + b;
-};
-
-//arrow function
-const sum3 = (a, b) => {
-  return a + b;
-};
-
-//arrow function reduzida
-const sum4 = (a, b) => a + b;
-
-console.log(sum(2, 3));
-console.log(sum2(2, 3));
-console.log(sum3(2, 3));
-console.log(sum4(2, 3));
-
-//template literals
-
-const name = 'Juan';
-const surName = 'Ibanez';
-const text1 = 'Meu nome é ' + name + ' ' + surName;
-const text2 = `Meu nome é ${name} ${surName}`;
-
-console.log(text1);
-console.log(text2);
-
-const sum5 = (a, b = 10) => a + b;
-console.log(sum5(2, 6));
+  //   let sumAges = 0;
+  //   for (let i = 0; i < people.results.length; i++) {
+  //     var current = people.results[i];
+  //     sumAges += current.dob.age;
+  //   }
+  //   console.log(sumAges);
+  //
+}
+function doFind() {
+  const found = people.results.find((person) => {
+    return person.location.state === 'Mato Grosso do Sul';
+  });
+  console.log(found);
+}
+function doSome() {
+  const found = people.results.some((person) => {
+    return person.location.state === 'Mato Grosso do Sul';
+  });
+  console.log(found);
+}
+function doEvery() {
+  const every = people.results.every((person) => {
+    return person.nat === 'BR';
+  });
+  console.log(every);
+}
+function doSort() {
+  const mappedNames = people.results
+    .map((person) => {
+      return {
+        name: person.name.first,
+      };
+    })
+    .filter((person) => person.name.startsWith('A'))
+    .sort((a, b) => {
+      return b.name.length - a.name.length;
+      // return a.name.localeCompare(b.name);
+    });
+  console.log(mappedNames);
+}
