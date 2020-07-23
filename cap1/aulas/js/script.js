@@ -44,6 +44,7 @@ switch (dia) {
   case 3:
     r = 'Terça';
     break;
+
   case 4:
     r = 'Quarta';
     break;
