@@ -1,16 +1,15 @@
-window.addEventListener('load', start);
+let globalNames = ['um', 'dois', 'tres', 'quatro'];
+let inputName = null;
+let currentIndex = null;
+let isEditing = false;
 
-var globalNames = ['um', 'dois', 'tres', 'quatro'];
-var inputName = null;
-var currentIndex = null;
-var isEditing = false;
-
-function start() {
+window.addEventListener('load', () => {
   inputName = document.querySelector('#InputName');
   preventFormSubmit();
   activateInput();
   render();
-}
+});
+
 function preventFormSubmit() {
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -21,7 +20,8 @@ function preventFormSubmit() {
 //pode usar para resolver o desafio do cap
 function activateInput() {
   function insertName(newName) {
-    globalNames.push(newName);
+    //globalNames.push(newName);
+    globalNames = [...globalNames, newName];
   }
   function updateName(newName) {
     globalNames[currentIndex] = newName;
@@ -52,7 +52,15 @@ function activateInput() {
 function render() {
   function createDeleteButton(index) {
     function deleteName() {
-      globalNames.splice(index, 1);
+      //globalNames.splice(index, 1);
+      // globalNames = globalNames.filter((names, i) => {
+      //if (i === index) {
+      //return false;
+      //}
+      //return true;
+      // return i !== index;
+      //});
+      globalNames = globalNames.filter((_, i) => i !== index);
       render();
     }
     var button = document.createElement('button');
@@ -95,7 +103,11 @@ function render() {
   clearInput();
 }
 
-function clearInput() {
+// function clearInput() {
+//   inputName.value = '';
+//   inputName.focus();
+// }
+const clearInput = () => {
   inputName.value = '';
   inputName.focus();
-}
+};
